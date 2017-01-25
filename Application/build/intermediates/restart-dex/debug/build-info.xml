@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="armeabi-v7a,armeabi"
+    api-level="16"
+    density="xhdpi"
+    format="8"
+    plugin-version="2.2.3"
+    timestamp="21636250370577"
+    token="6385652924793887156"
+    verifier="CLASS_ADDED" >
+
+    <task
+        name="javac"
+        duration="524" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="28" />
+    <task
+        name="verifier"
+        duration="8" />
+
+    <artifact
+        location="D:\Android\APP\WheelChairClient\Application\build\outputs\apk\Application-debug.apk"
+        type="MAIN" />
+
+    <build
+        timestamp="21636250370577"
+        verifier="CLASS_ADDED" >
+        <artifact
+            location="D:\Android\APP\WheelChairClient\Application\build\outputs\apk\Application-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>
