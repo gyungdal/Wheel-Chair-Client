@@ -24,23 +24,19 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-import android.widget.ViewAnimator;
 
-import com.example.android.common.activities.SampleActivityBase;
+import com.example.android.bluetoothchat.fragment.BluetoothChatFragment;
+import com.example.android.bluetoothchat.fragment.SosFragment;
+import com.example.android.bluetoothchat.fragment.StatusFragment;
 import com.example.android.common.logger.Log;
-import com.example.android.common.logger.LogFragment;
-import com.example.android.common.logger.LogWrapper;
-import com.example.android.common.logger.MessageOnlyLogFilter;
 import com.example.android.weater.GpsInfo;
 import com.example.android.weater.ParsingWeatherInfo;
 
@@ -73,11 +69,11 @@ public class MainActivity extends FragmentActivity {
         final ActionBar bar = getActionBar();
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
-        bar.addTab(bar.newTab().setText("HEY!").setTabListener(new ActionBar.TabListener() {
+        bar.addTab(bar.newTab().setText("상태").setTabListener(new ActionBar.TabListener() {
             @Override
             public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                BluetoothChatFragment fragment = new BluetoothChatFragment();
+                Fragment fragment = new StatusFragment();
                 transaction.replace(R.id.sample_content_fragment, fragment);
                 transaction.commit();
             }
@@ -91,12 +87,12 @@ public class MainActivity extends FragmentActivity {
             public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
 
             }
-        }), 0, true);
-        bar.addTab(bar.newTab().setText("TWO!").setTabListener(new ActionBar.TabListener() {
+        }));
+        bar.addTab(bar.newTab().setText("원격 조종").setTabListener(new ActionBar.TabListener() {
             @Override
             public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                BluetoothChatFragment fragment = new BluetoothChatFragment();
+                Fragment fragment = new BluetoothChatFragment();
                 transaction.replace(R.id.sample_content_fragment, fragment);
                 transaction.commit();
             }
@@ -110,7 +106,26 @@ public class MainActivity extends FragmentActivity {
             public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
 
             }
-        }), 0, true);
+        }), 1, false);
+        bar.addTab(bar.newTab().setText("SOS").setTabListener(new ActionBar.TabListener() {
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                Fragment fragment = new SosFragment();
+                transaction.replace(R.id.sample_content_fragment, fragment);
+                transaction.commit();
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+            }
+        }), 2, false);
         for(int i = 0;i<Permissions.length;i++)
             requestPermission(i, Permissions[i]);
 

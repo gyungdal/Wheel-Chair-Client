@@ -44,6 +44,10 @@
         "source": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
+        "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_sos.xml",
+        "source": "D:\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\layout\\fragment_sos.xml"
+    },
+    {
         "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
         "source": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
@@ -154,6 +158,10 @@
     {
         "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
         "source": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_status.xml",
+        "source": "D:\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\layout\\fragment_status.xml"
     },
     {
         "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",

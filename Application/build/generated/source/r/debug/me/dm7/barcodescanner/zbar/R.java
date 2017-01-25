@@ -8,15 +8,15 @@ package me.dm7.barcodescanner.zbar;
 
 public final class R {
 	public static final class color {
-		public static final int viewfinder_border = 0x7f0b0049;
-		public static final int viewfinder_laser = 0x7f0b004a;
-		public static final int viewfinder_mask = 0x7f0b004b;
+		public static final int viewfinder_border = 0x7f0c0049;
+		public static final int viewfinder_laser = 0x7f0c004a;
+		public static final int viewfinder_mask = 0x7f0c004b;
 	}
 	public static final class id {
 	}
 	public static final class integer {
-		public static final int viewfinder_border_length = 0x7f080000;
-		public static final int viewfinder_border_width = 0x7f080001;
+		public static final int viewfinder_border_length = 0x7f090000;
+		public static final int viewfinder_border_width = 0x7f090001;
 	}
 	public static final class layout {
 	}

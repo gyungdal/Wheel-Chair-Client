@@ -5,30 +5,30 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="21636250370577"
+    timestamp="29146597321421"
     token="6385652924793887156"
-    verifier="CLASS_ADDED" >
+    verifier="R_CLASS_CHANGE" >
 
     <task
         name="javac"
-        duration="524" />
+        duration="901" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="28" />
+        duration="129" />
     <task
         name="verifier"
-        duration="8" />
+        duration="46" />
 
     <artifact
         location="D:\Android\APP\WheelChairClient\Application\build\outputs\apk\Application-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="21636250370577"
-        verifier="CLASS_ADDED" >
+        timestamp="29146597321421"
+        verifier="R_CLASS_CHANGE" >
         <artifact
             location="D:\Android\APP\WheelChairClient\Application\build\outputs\apk\Application-debug.apk"
             type="MAIN" />

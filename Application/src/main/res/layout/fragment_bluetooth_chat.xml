@@ -14,16 +14,35 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-                android:gravity="center_vertical">
+              android:layout_height="match_parent">
 
     <com.example.android.bluetoothchat.utils.Joystick
         android:id="@+id/joystick"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+    <TextView
+        android:text="아래 버튼을 누르면 원격 조종이 종료 됩니다."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textSize="15dp"
+        android:id="@+id/endNotice" />
+
+    <Button
+        android:text="종료버튼"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/joystick"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:id="@+id/endButton" />
+
+</RelativeLayout>
