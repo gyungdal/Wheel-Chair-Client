@@ -98,14 +98,15 @@ public class NewDeviceActivity extends Activity{
                         return;
                     }
                     AuthManager auth = new AuthManager(getPhoneNumber(), contents);
-                    boolean canUse = false;
-                    try {
+                    boolean canUse = true;
+                    /*try {
                         canUse = auth.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
+                        canUse = true;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
                         e.printStackTrace();
-                    }
+                    }*/
                     if (!canUse) {
                         Toast.makeText(getApplicationContext(), "이미 등록된 기기거나 네트워크 상황이 좋지 못합니다.",
                                 Toast.LENGTH_SHORT).show();

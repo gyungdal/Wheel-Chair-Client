@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import com.example.android.bluetoothchat.utils.DBManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -38,15 +41,13 @@ public class SosFragment extends Fragment {
 
     private void sendMessage(String number, String path) {
         File file = new File(path);
-        Intent sendIntent = new Intent(Intent.ACTION_SEND);
-        sendIntent.addCategory("android.intent.category.DEFAULT");
-        sendIntent.putExtra("address", number);
-        sendIntent.putExtra("exit_on_sent", true);
-        sendIntent.putExtra("subject", "TEST MMS");
-        sendIntent.putExtra("sms_body", "MMS 테스트입니다.");
-        sendIntent.putExtra(Intent.EXTRA_STREAM, file.toURI());
-        sendIntent.setType("image/png");
-        startActivity(sendIntent);
+        Log.i("PNG FILE SIZE", String.valueOf(file.length()));
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra("address", number);
+        intent.putExtra("sms_body", "SOS TEST!!!");
+        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+        intent.setType("image/png");
+        startActivity(intent);
     }
 
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
@@ -58,9 +59,14 @@ public class SosFragment extends Fragment {
                 for(HashMap<String, String> info : lists){
                     list.add(info.get("item2"));
                 }
+                String temp = "";
                 for(String number : list){
-                    sendMessage(number, videoRecoder.getPhotoPath());
+                    if(!temp.isEmpty())
+                        temp += ",";
+                    temp +=  number;
                 }
+                Toast.makeText(getContext(), videoRecoder.getPhotoPath() + " -> " + temp, Toast.LENGTH_SHORT).show();
+                sendMessage(temp, videoRecoder.getPhotoPath());
                 break;
             }
         }

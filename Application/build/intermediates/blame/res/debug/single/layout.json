@@ -128,6 +128,10 @@
         "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\activity_new_company.xml",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\layout\\activity_new_company.xml"
+    },
+    {
         "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
         "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_part_time.xml"
     },

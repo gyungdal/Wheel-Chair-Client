@@ -43,6 +43,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.RECORD_VIDEO" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <uses-feature
         android:name="android.hardware.camera.front"
@@ -74,6 +76,7 @@
         </activity>
         <activity android:name="com.example.android.bluetoothchat.auth.QrCodeReader" />
         <activity android:name="com.example.android.bluetoothchat.enrollment.UserNameActivity" />
+        <activity android:name="com.example.android.bluetoothchat.enrollment.CompanyNameActivity" />
         <activity android:name="com.example.android.bluetoothchat.enrollment.FinishActivity" />
         <activity android:name="com.example.android.bluetoothchat.enrollment.NewDeviceActivity" />
         <activity

@@ -5,33 +5,47 @@
     density="xxxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="10018356304283"
+    timestamp="30432471446377"
     token="-3184372644909516574"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="597" />
+        duration="701" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="304" />
     <task
         name="instant-run-transform"
-        duration="773" />
+        duration="29" />
     <task
         name="verifier"
-        duration="220" />
+        duration="3" />
 
     <artifact
-        location="D:\Develop\Android\APP\WheelChairClient\Application\build\outputs\apk\Application-debug.apk"
-        type="MAIN" />
+        location="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
     <build
-        timestamp="10018356304283"
+        timestamp="30321140600216"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="D:\Develop\Android\APP\WheelChairClient\Application\build\outputs\apk\Application-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="30416710572423"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\builds\debug\30416710572423\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="30432471446377"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

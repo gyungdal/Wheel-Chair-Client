@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.android.bluetoothchat.MainActivity;
 import com.example.android.bluetoothchat.R;
@@ -25,7 +26,9 @@ public class FinishActivity extends Activity {
         super.onCreate(savedInstanceState);
         // If the Android version is lower than Jellybean, use this call to hide
         // the status bar.
-
+        String userName = getIntent().getStringExtra("user_name");
+        String address = getIntent().getStringExtra("address");
+        String companyName = getIntent().getStringExtra("company_name");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ColorDrawable colorDrawable = new ColorDrawable();
             colorDrawable.setColor(0xff01a032);
@@ -41,7 +44,7 @@ public class FinishActivity extends Activity {
         }else{
             getActionBar().hide();
         }
-        setContentView(R.layout.activity_new_devices);
+        setContentView(R.layout.activity_new_finish);
         end = (Button)findViewById(R.id.end_button);
         end.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,5 +53,7 @@ public class FinishActivity extends Activity {
                 FinishActivity.this.finish();
             }
         });
+        Toast.makeText(getApplicationContext(), "USER : " + userName + "\nADDRESS : "
+                + address + "\nCOMPANY : " + companyName, Toast.LENGTH_SHORT).show();
     }
 }

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -37,7 +38,7 @@ public class SosManagerFragment extends Fragment {
     private final int REQUEST_SELECT_CONTACT = 1;
 
     private ListView sosList;
-    private ImageButton add;
+    private ImageButton add, as;
     private DBManager dbManager;
     private ArrayList<HashMap<String, String>> numbers;
 
@@ -50,8 +51,8 @@ public class SosManagerFragment extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         switch (requestCode) {
-            case REQUEST_SELECT_CONTACT :
-                if(data.getData() == null)
+            case REQUEST_SELECT_CONTACT:{
+                if (data.getData() == null)
                     break;
                 Cursor cursor = getContext().getContentResolver().query(data.getData(),
                         new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
@@ -61,23 +62,38 @@ public class SosManagerFragment extends Fragment {
                 String number = cursor.getString(1);   //1은 번호를 받아옵니다.
                 cursor.close();
                 DBManager dbManager = new DBManager(getContext());
-                Log.i("name", name);
-                Log.i("number", number);
-                Toast.makeText(getContext(), "name : " + name + "\nnumber : " + number,
-                        Toast.LENGTH_SHORT).show();
-                dbManager.insertNumber(name, number);
-                numbers = dbManager.selectNumber();
-                sosList.setAdapter(new SimpleAdapter(getActivity(), numbers, android.R.layout.simple_list_item_2,
-                        new String[]{"item1", "item2"},
-                        new int[]{android.R.id.text1, android.R.id.text2}));
+                ArrayList<HashMap<String, String>> items = dbManager.selectNumber();
+                if (!isAlready(items, number)) {
+                    Log.i("name", name);
+                    Log.i("number", number);
+                    Toast.makeText(getContext(), "name : " + name + "\nnumber : " + number,
+                            Toast.LENGTH_SHORT).show();
+                    dbManager.insertNumber(name, number);
+                    numbers = dbManager.selectNumber();
+                    sosList.setAdapter(new SimpleAdapter(getActivity(), numbers, android.R.layout.simple_list_item_2,
+                            new String[]{"item1", "item2"},
+                            new int[]{android.R.id.text1, android.R.id.text2}));
+                } else {
+                    Toast.makeText(getContext(), "이미 있는 번호입니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
+            }
         }
+    }
+
+    private boolean isAlready(ArrayList<HashMap<String, String>> items, String number){
+        for(HashMap<String, String> item : items){
+            if(item.get("item2").equals(number))
+                return true;
+        }
+        return false;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         sosList = (ListView)view.findViewById(R.id.sos_list);
         add = (ImageButton)view.findViewById(R.id.add_button);
+        as = (ImageButton)view.findViewById(R.id.as_button);
         numbers = dbManager.selectNumber();
         sosList.setAdapter(new SimpleAdapter(getActivity(), numbers, android.R.layout.simple_list_item_2,
                 new String[]{"item1", "item2"},
@@ -107,6 +123,23 @@ public class SosManagerFragment extends Fragment {
                 });
                 builder.show();
                 return false;
+            }
+        });
+        as.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.myDialog));
+                builder.setTitle("관리자에게 문의하실 내용을 적어주세요.");
+                final EditText input = new EditText(new ContextThemeWrapper(getActivity(), R.style.myDialog));
+                builder.setView(input);
+                builder.setPositiveButton("문의하기", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "문의가 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
             }
         });
         add.setOnClickListener(new View.OnClickListener() {

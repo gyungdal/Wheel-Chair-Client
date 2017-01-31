@@ -29,6 +29,8 @@
         android:layout_alignLeft="@+id/next_button"
         android:layout_alignStart="@+id/next_button"
         android:maxLines="1"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:maxEms="5"/>
 
     <Button

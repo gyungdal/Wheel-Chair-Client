@@ -26,9 +26,5 @@
     {
         "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\sun.png",
         "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\sun.png"
-    },
-    {
-        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\floatting_button.png",
-        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\floatting_button.png"
     }
 ]

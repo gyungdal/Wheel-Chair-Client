@@ -27,7 +27,7 @@ public class UserNameActivity extends Activity{
         super.onCreate(savedInstanceState);
         // If the Android version is lower than Jellybean, use this call to hide
         // the status bar.
-        String adr = getIntent().getStringExtra("address");
+        final String adr = getIntent().getStringExtra("address");
         if(adr.isEmpty()){
             Toast.makeText(getApplicationContext(), "인증 실패", Toast.LENGTH_SHORT).show();
             UserNameActivity.this.finish();
@@ -57,7 +57,10 @@ public class UserNameActivity extends Activity{
                 if(userName.getText().toString().trim().isEmpty()){
                     Toast.makeText(getApplicationContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
                 }else{
-                    startActivity(new Intent(getApplicationContext(), FinishActivity.class));
+                    Intent intent = new Intent(getApplicationContext(), CompanyNameActivity.class);
+                    intent.putExtra("address", adr);
+                    intent.putExtra("name", userName.getText().toString());
+                    startActivity(intent);
                     UserNameActivity.this.finish();
                 }
             }
