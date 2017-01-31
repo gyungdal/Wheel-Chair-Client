@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <TextView
+        android:text="등록 하시는 분의 이름을 입력해주세요."
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp" />
+
+    <EditText
+        android:hint="이름"
+        android:layout_marginBottom="5dp"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:id="@+id/new_name"
+        android:background="@drawable/round_none_area"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/next_button"
+        android:layout_alignLeft="@+id/next_button"
+        android:layout_alignStart="@+id/next_button"
+        android:maxLines="1"
+        android:maxEms="5"/>
+
+    <Button
+        android:text="등록"
+        android:textColor="@color/background"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_white_area"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="68dp"
+        android:id="@+id/next_button" />
+
+</RelativeLayout>

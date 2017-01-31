@@ -3,255 +3,237 @@
 
     <item
         is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
-        jumboMode="true"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
-        revision="24.0.3"
-        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_1646c737244739f9e83fb9567580d3d812283cf0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_7fa96ba50bc356249df466e78fdf101f7500576a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_7c2fd8d8f7043c9309e2ee27cc8e9fe0e9b77957.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="M:\Tool\Develop\Android\Gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.3.0\73c49077166faa4c3c0059c5f583d1d7bd1475fe\core-3.3.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="73c49077166faa4c3c0059c5f583d1d7bd1475fe">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\core-3.3.0_422d87961973875687b505ae6b0324ac1dbcc48f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="535ee75e6cf4460071fdddd93eb1101e4281294f">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-zbar-1.8.4_9161e64f90707bc82afacaccc70eb39cfda35f07.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_55ff3d941c028084892ea93fb2e5c06a9441d5f2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\me.dm7.barcodescanner\zxing\1.9\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="760ff0a866a9b3b7fe4a91cfe6439d9dc93cea7c">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-zxing-1.9_1aeffa47e9c12b13df2aa528d4529c550a20725f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="06823b2eec1be1b45ae32e100d2e03c7294762d3">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\instant-run-bootstrap_c47db9bcd884edf47c4b2d02bda92d565f2ca5c5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.journeyapps\zxing-android-embedded\3.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a0d7b062303473e1825efcb59ab0e3fbfbb64247">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.journeyapps-zxing-android-embedded-3.0.0_e3e768b2ec48d1e260a146cdb439945f22fa487e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_b0a66a724461904dec9a8faa64c80da92c389102.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_9497116b1d6124c3c59e4acdb1368b46f8aac230.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="39decd621c71a4eb7d7b47e2856f031efa01b411">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\instant-run_26cc437503cf7fa259242538744d67f67640651d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.0.0_4125636754a04d8c319d4a5e0bf6e298f01ff38e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_d33f04daf884b2deb767c943c63ed2eb268ac7fa.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_1bd4651dd6326bfc30604b44dd29f1f074e28359.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_f9d2941ff2e95a055f3575ca7aabb7a70d1d1c24.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\design\25.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="26384be22ddc74cfe197ebda9edbc7d1fd8bd537">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-design-25.0.0_1dac0364ae54b644967dd8ae0675d0e832b1517b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-25.0.1_d84980bbdc922eceb2b0695e8694b23a682d38df.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\transition\25.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="0c6d948e6cb9ea6f535d175fb61ba2930719c0e9">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-transition-25.0.0_d10acc551d7ac75d0121b322bfafa53edf624e8c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_2a5980d5dfd3415e9b30c4736f3aa296e2189c15.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_a66593fb8dba69a93f42cf4f11008f4f00ff5893.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\jars\libs\zbar.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="6b963fd8297b9b963fbb0afb0b18a11ed9044f78">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\zbar_955c5ee2d498b88a8a9c4fe5671ff057eb1b4a3a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
+        revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_a76de262575bbde21c1aea57a970885f45fe13ac.jar" />
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_3ecad80c632570ba90d4299109ae7b2563303004.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
-        jumboMode="true"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
-        revision="24.0.3"
-        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_426cb1e01546fb53ae1386968ccab90fd6d34755.jar" />
+        revision="25.0.2"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-design-25.0.1_a46d1c1ecc8fcdd9010164ed827ef8f8471fae5d.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="M:\Tool\Develop\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
-        jumboMode="true"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
-        revision="24.0.3"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_3bdbe20e47e127f29fa9794a54843dd0022eb618.jar" />
+        revision="25.0.2"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_22a76c5880607ce8be2f195bb2c2b12288827e10.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\me.dm7.barcodescanner\core\1.9\jars\classes.jar"
-        jumboMode="true"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
-        revision="24.0.3"
-        sha1="ceda0650ec225b9c0143ed8ff1c010d4e621a423">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-core-1.9_8bb1158f0149f79bfae60a3eeb6f2c7d645506df.jar" />
+        revision="25.0.2"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_e018fe21ab79515c2c3f54e6bd3fe6a4d9edbae6.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\25.0.1\jars\classes.jar"
-        jumboMode="true"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
-        revision="24.0.3"
-        sha1="4700f436ede140fb804204f806c9cc3f08e386f4">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-gridlayout-v7-25.0.1_076f24b3c45961ebd535a039f2697e4914813e34.jar" />
+        revision="25.0.2"
+        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-25.0.1_39ab01007b3e1f9196c367778a36adb514cc0f32.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="true"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
-        revision="24.0.3"
+        revision="25.0.2"
+        sha1="535ee75e6cf4460071fdddd93eb1101e4281294f">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-zbar-1.8.4_df50ab51dc0f3652d50a88f53095ce54fda7b70e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_0c7a39c69bbee7f54dc9f0680d6fa00bb1568fd5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-transition-25.0.1_64456e90680c4eae04beef064fc639a4abcce6c1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
         sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
-        <dex dex="D:\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_43f52a022bcf3cc69413178912d715595a226f93.jar" />
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_5a204d69d395b4516298e013973ce2ca41cf3e98.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\GyungDal\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.3.0\73c49077166faa4c3c0059c5f583d1d7bd1475fe\core-3.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="73c49077166faa4c3c0059c5f583d1d7bd1475fe">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\core-3.3.0_3cef38f6b5ad2b633d994e5f0351887d053642d4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_c872c110a34d5efe5d37f894afba35811fad49a8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_5c5323aa96871947daf619e8a0141cf8052ed35d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.journeyapps\zxing-android-embedded\3.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a0d7b062303473e1825efcb59ab0e3fbfbb64247">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.journeyapps-zxing-android-embedded-3.0.0_ff15ea8122993e9b2fa2a0d154f70fe1c732e9d8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_d1093a069a9db520633076fdba07a532f4ab8061.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\me.dm7.barcodescanner\core\1.9\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ceda0650ec225b9c0143ed8ff1c010d4e621a423">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-core-1.9_aa752ef91ffe48ce025923360380f3e9cdd906b1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Tool\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_3de3cceb62841bd5488bbff2a16a8447f7394e7f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_6924da8907061edd255359ecaf3aa48a9916b1b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4700f436ede140fb804204f806c9cc3f08e386f4">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-gridlayout-v7-25.0.1_14f73dbbb4312d960a89b26d4178150333de287c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_d925a8d805fbfed6a94a6346621abda82016b616.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_b8f5432b384171db14761731165fb6405244e952.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.0.1_02c6cc45dbe685d19c9c749b5b8909486393fa12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_666b7958154a9ba21a981363ba44d1d1c8f7bd9a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_aedc7933150b85ec0317d0b5335af40554082b00.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_f2dd31568b3534931dca464c29c2897127674d5f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\me.dm7.barcodescanner\zxing\1.9\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="760ff0a866a9b3b7fe4a91cfe6439d9dc93cea7c">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-zxing-1.9_063eb3f9b3f6215203dfee6534474c88903f6e4e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\jars\libs\zbar.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6b963fd8297b9b963fbb0afb0b18a11ed9044f78">
+        <dex dex="D:\Develop\Android\APP\WheelChairClient\Application\build\intermediates\pre-dexed\debug\zbar_dcc6cb22c0288f0823b4bac802eaf12724e99e92.jar" />
     </item>
 
 </items>

@@ -2,8 +2,10 @@ package com.example.android.bluetoothchat.auth;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
@@ -26,6 +28,12 @@ class QrCodeReader extends Activity implements ZXingScannerView.ResultHandler {
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
+        if (Build.VERSION.SDK_INT < 16) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }else{
+            getActionBar().hide();
+        }
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         setContentView(mScannerView);                // Set the scanner view as the content view
     }

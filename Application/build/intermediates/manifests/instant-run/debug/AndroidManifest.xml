@@ -21,7 +21,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="25" />
+        android:targetSdkVersion="23" />
 
     <!-- Min/target SDK versions (<uses-sdk>) managed by build.gradle -->
 
@@ -74,6 +74,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.android.bluetoothchat.auth.QrCodeReader" />
+        <activity android:name="com.example.android.bluetoothchat.enrollment.UserNameActivity" />
+        <activity android:name="com.example.android.bluetoothchat.enrollment.FinishActivity" />
+        <activity android:name="com.example.android.bluetoothchat.enrollment.NewDeviceActivity" />
         <activity
             android:name="com.example.android.bluetoothchat.DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"

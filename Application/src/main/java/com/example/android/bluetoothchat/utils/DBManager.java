@@ -8,6 +8,7 @@ import android.util.Pair;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -46,7 +47,7 @@ public class DBManager {
         @Override
         public void onCreate(SQLiteDatabase arg0) {
 
-            String createSql = "create table number (number text);";
+            String createSql = "create table number (name text, number text);";
             arg0.execSQL(createSql);
             createSql = "create table data (number text, address text);";
             arg0.execSQL(createSql);
@@ -59,20 +60,23 @@ public class DBManager {
         }
     }
 
-    public void insertNumber(String number){
-        String sql = "insert into number values(\'" + number + "\')";
+    public void insertNumber(String name, String number){
+        String sql = "insert into number values(\'" + name + "\', \'" + number + "\')";
         db.execSQL(sql);
     }
 
-    public ArrayList<String> selectNumber(){
+    public ArrayList<HashMap<String, String>> selectNumber(){
         String sql = "select * from number;";
         Cursor results = db.rawQuery(sql, null);
 
         results.moveToFirst();
-        ArrayList<String> infos = new ArrayList<String>();
+        ArrayList<HashMap<String, String>> infos =  new ArrayList<HashMap<String, String>>();
 
         while (!results.isAfterLast()) {
-            infos.add(results.getString(0));
+            HashMap<String, String> map = new HashMap<String, String> ();
+            map.put("item1", results.getString(0));
+            map.put("item2", results.getString(1));
+            infos.add(map);
             results.moveToNext();
         }
         results.close();
@@ -87,7 +91,7 @@ public class DBManager {
     // 데이터 추가
     public void insertData(String number, String address) {
         String sql = "insert into data values(\'" +
-                number + "\', " + address + "\') on duplicate key update" +
+                number + "\', \'" + address + "\') on duplicate key update" +
                 " number=\'" + number + "\', address=\'" + address + "\';";
         db.execSQL(sql);
     }

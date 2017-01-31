@@ -55,9 +55,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".auth.QrCodeReader"
-            />
-        <activity
+        <activity android:name=".auth.QrCodeReader" />
+        <activity android:name=".enrollment.UserNameActivity"/>
+            <activity android:name=".enrollment.FinishActivity"/>
+            <activity android:name=".enrollment.NewDeviceActivity"/>
+            <activity
             android:name=".DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/select_device"

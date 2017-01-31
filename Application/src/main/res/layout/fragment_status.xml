@@ -55,12 +55,13 @@
                         android:scaleType="fitCenter"/>
 
                     <TextView
+                        android:id="@+id/tempText"
                         android:layout_gravity="bottom"
                         android:layout_width="0dp"
                         android:layout_weight="50"
                         android:layout_height="wrap_content"
                         android:text="30℃"
-                        android:textSize="35dp"/>
+                        android:textSize="30dp"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -101,12 +102,13 @@
                         android:scaleType="fitCenter"/>
 
                     <TextView
+                        android:id="@+id/humiText"
                         android:layout_gravity="bottom"
                         android:layout_width="0dp"
                         android:layout_weight="50"
                         android:layout_height="wrap_content"
                         android:text="30℃"
-                        android:textSize="35dp"/>
+                        android:textSize="30dp"/>
 
                 </LinearLayout>
             </LinearLayout>

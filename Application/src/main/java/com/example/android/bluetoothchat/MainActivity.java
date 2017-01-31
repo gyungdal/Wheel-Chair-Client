@@ -20,8 +20,9 @@ package com.example.android.bluetoothchat;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -31,16 +32,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.example.android.bluetoothchat.enrollment.NewDeviceActivity;
+import com.example.android.bluetoothchat.enrollment.UserNameActivity;
 import com.example.android.bluetoothchat.fragment.BluetoothChatFragment;
 import com.example.android.bluetoothchat.fragment.SosFragment;
+import com.example.android.bluetoothchat.fragment.SosManagerFragment;
 import com.example.android.bluetoothchat.fragment.StatusFragment;
-import com.example.android.common.logger.Log;
-import com.example.android.weater.GpsInfo;
-import com.example.android.weater.ParsingWeatherInfo;
-
-import java.util.concurrent.ExecutionException;
 
 /**
  * A simple launcher activity containing a summary sample description, sample log and a custom
@@ -57,8 +57,8 @@ public class MainActivity extends FragmentActivity {
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.BLUETOOTH_ADMIN,
             Manifest.permission.BLUETOOTH,
-            Manifest.permission_group.STORAGE,
-            Manifest.permission_group.CONTACTS,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_CONTACTS,
             Manifest.permission_group.SMS,
             Manifest.permission_group.CAMERA};
     // Whether the Log Fragment is currently shown
@@ -66,7 +66,16 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ColorDrawable colorDrawable = new ColorDrawable();
+        colorDrawable.setColor(0xff01a032);
         final ActionBar bar = getActionBar();
+        bar.setBackgroundDrawable(colorDrawable);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(0xff01a032);
+        }
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
         bar.addTab(bar.newTab().setText("상태").setTabListener(new ActionBar.TabListener() {
@@ -126,6 +135,43 @@ public class MainActivity extends FragmentActivity {
 
             }
         }), 2, false);
+        bar.addTab(bar.newTab().setText("SOS 관리").setTabListener(new ActionBar.TabListener() {
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                Fragment fragment = new SosManagerFragment();
+                transaction.replace(R.id.sample_content_fragment, fragment);
+                transaction.commit();
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+            }
+        }), 3, false);
+        bar.addTab(bar.newTab().setText("기기 관리").setTabListener(new ActionBar.TabListener() {
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                startActivity(new Intent(getApplicationContext(), NewDeviceActivity.class));
+                MainActivity.this.finish();
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+            }
+        }), 4, false);
+
         for(int i = 0;i<Permissions.length;i++)
             requestPermission(i, Permissions[i]);
 
@@ -168,35 +214,6 @@ public class MainActivity extends FragmentActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    private void testGPS(){
-        GpsInfo gps = new GpsInfo(MainActivity.this);
-        // GPS 사용유무 가져오기
-        if (gps.isGetLocation()) {
-
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
-            Log.i("GPS", "위도: " + latitude + ", 경도: " + longitude);
-            ParsingWeatherInfo weather =
-                    new ParsingWeatherInfo(String.valueOf(latitude), String.valueOf(longitude));
-            String[] info = {""};
-            try {
-                info = weather.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-            /*Toast.makeText(
-                    getApplicationContext(),
-                    "당신의 위치 - \n위도: " + latitude + "\n경도: " + longitude,
-                    Toast.LENGTH_LONG).show();*/
-            Toast.makeText(MainActivity.this, "온도 : " + info[0] +
-                    "\n습도 : " + info[1] + "\n풍속 : " + info[2], Toast.LENGTH_SHORT).show();
-        } else {
-            // GPS 를 사용할수 없으므로
-            gps.showSettingsAlert();
-        }
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);

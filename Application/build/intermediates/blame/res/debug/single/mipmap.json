@@ -1,26 +1,34 @@
 [
     {
-        "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\rain.png",
-        "source": "D:\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\rain.png"
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\qrcode.png",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\qrcode.png"
     },
     {
-        "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\sun.png",
-        "source": "D:\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\sun.png"
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\humi.png",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\humi.png"
     },
     {
-        "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\humi.png",
-        "source": "D:\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\humi.png"
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\stamp.png",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\stamp.png"
     },
     {
-        "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\cloud.png",
-        "source": "D:\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\cloud.png"
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\cloud.png",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\cloud.png"
     },
     {
-        "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\stamp.png",
-        "source": "D:\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\stamp.png"
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\sos_circle.png",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\sos_circle.png"
     },
     {
-        "merged": "D:\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\sos_circle.png",
-        "source": "D:\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\sos_circle.png"
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\rain.png",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\rain.png"
+    },
+    {
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\sun.png",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\sun.png"
+    },
+    {
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap\\floatting_button.png",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\mipmap\\floatting_button.png"
     }
 ]

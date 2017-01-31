@@ -41,6 +41,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.FileProvider;
+import android.support.v4.content.res.ResourcesCompat;
 import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -68,9 +69,12 @@ import com.example.android.bluetoothchat.sos.VideoRecoder;
 import com.example.android.bluetoothchat.utils.DBManager;
 import com.example.android.bluetoothchat.utils.Joystick;
 import com.example.android.bluetoothchat.utils.SignalBuilder;
+import com.example.android.bluetoothchat.utils.SingleMemory;
 import com.example.android.common.logger.Log;
 import com.example.android.weater.GpsInfo;
 import com.example.android.weater.ParsingWeatherInfo;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -193,17 +197,49 @@ public class BluetoothChatFragment extends Fragment {
     private void setRemoteState(boolean state){
         if(state){
             endButton.setVisibility(View.VISIBLE);
+            endNotice.setVisibility(View.VISIBLE);
+            joystick.setVisibility(View.VISIBLE);
+            stampView.setVisibility(View.INVISIBLE);
+            startButton.setVisibility(View.INVISIBLE);
+            startNotice.setVisibility(View.INVISIBLE);
+            startButton.setOnClickListener(null);
+            endButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setupChat();
+                }
+            });
         }else{
-
+            endButton.setVisibility(View.INVISIBLE);
+            endNotice.setVisibility(View.INVISIBLE);
+            joystick.setVisibility(View.INVISIBLE);
+            stampView.setVisibility(View.VISIBLE);
+            startButton.setVisibility(View.VISIBLE);
+            startNotice.setVisibility(View.VISIBLE);
+            startButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String address = SingleMemory.getInstance().getData("address");
+                    if(address == null)
+                        ((Activity)getContext()).finish();
+                    else
+                        connectDevice(address);
+                }
+            });
+            endButton.setOnClickListener(null);
         }
     }
 
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        startButton = (Button)view.findViewById(R.id.startButton);
+        startNotice = (TextView)view.findViewById(R.id.startNotice);
+        stampView = (ImageView)view.findViewById(R.id.stampView);
         endButton = (Button)view.findViewById(R.id.endButton);
         endNotice = (TextView) view.findViewById(R.id.endNotice);
         joystick = (Joystick) view.findViewById(R.id.joystick);
+        setRemoteState(false);
         joystick.setOnJoystickMoveListener(new Joystick.OnJoystickMoveListener() {
             @Override
             public void onValueChanged(int angle, int power, int direction) {
@@ -420,9 +456,11 @@ public class BluetoothChatFragment extends Fragment {
             FragmentActivity activity = getActivity();
             switch (msg.what) {
                 case Constants.MESSAGE_STATE_CHANGE:
+                    setRemoteState(false);
                     switch (msg.arg1) {
                         case BluetoothChatService.STATE_CONNECTED:
                             setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
+                            setRemoteState(true);
                             break;
                         case BluetoothChatService.STATE_CONNECTING:
                             setStatus(R.string.title_connecting);
@@ -542,7 +580,7 @@ public class BluetoothChatFragment extends Fragment {
                 Log.i("number", number);
                 Toast.makeText(getContext(), "name : " + name + "\nnumber : " + number,
                         Toast.LENGTH_SHORT).show();
-                dbManager.insertNumber(number);
+                dbManager.insertNumber(name, number);
                 break;
             case REQUEST_VIDEO_RECORD :{
                 videoRecoder.saveThumbnail();
@@ -583,7 +621,7 @@ public class BluetoothChatFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.bluetooth_chat, menu);
+        //inflater.inflate(R.menu.bluetooth_chat, menu);
     }
 
     @Override
@@ -627,7 +665,7 @@ public class BluetoothChatFragment extends Fragment {
                 return true;
             }
             case R.id.SOS :{
-
+/*
                 final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("SOS 전화부");
                 final DBManager dbManager = new DBManager(getContext());
@@ -723,13 +761,13 @@ public class BluetoothChatFragment extends Fragment {
                         dialogInterface.dismiss();
                     }
                 });
-                /*builder.setPositiveButton("전송", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("전송", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                     }
-                });*/
-                builder.show();
+                });
+                builder.show();*/
                 return true;
             }
         }
