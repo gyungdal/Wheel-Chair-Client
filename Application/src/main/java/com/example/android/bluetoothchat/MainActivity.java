@@ -18,11 +18,15 @@
 package com.example.android.bluetoothchat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -30,17 +34,30 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.example.android.bluetoothchat.community.deleteWheel;
+import com.example.android.bluetoothchat.community.getWheel;
 import com.example.android.bluetoothchat.enrollment.NewDeviceActivity;
 import com.example.android.bluetoothchat.enrollment.UserNameActivity;
 import com.example.android.bluetoothchat.fragment.BluetoothChatFragment;
 import com.example.android.bluetoothchat.fragment.SosFragment;
 import com.example.android.bluetoothchat.fragment.SosManagerFragment;
 import com.example.android.bluetoothchat.fragment.StatusFragment;
+import com.example.android.bluetoothchat.utils.SingleMemory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * A simple launcher activity containing a summary sample description, sample log and a custom
@@ -51,157 +68,156 @@ import com.example.android.bluetoothchat.fragment.StatusFragment;
  */
 @TargetApi(Build.VERSION_CODES.M)
 public class MainActivity extends FragmentActivity {
-
+    int PERMISSION_ALL = 1;
     public static final String TAG = "MainActivity";
-    private final String[] Permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
+    private final String[] Permissions = {
+            Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.BLUETOOTH_ADMIN,
-            Manifest.permission.BLUETOOTH,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_CONTACTS,
-            Manifest.permission_group.SMS,
-            Manifest.permission_group.CAMERA};
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.CAMERA};
     // Whether the Log Fragment is currently shown
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ColorDrawable colorDrawable = new ColorDrawable();
-        colorDrawable.setColor(0xff01a032);
-        final ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(colorDrawable);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(0xff01a032);
+        if(!hasPermissions(MainActivity.this, Permissions)){
+            Log.i("Permission", "Not permission");
+            startActivity(new Intent(MainActivity.this, PermissionRequestActivity.class));
+            MainActivity.this.finish();
+        }else {
+            if (getPhoneNumber().isEmpty()) {
+                Toast.makeText(getApplicationContext(), "개통되지 않은 단말입니다!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+            SingleMemory.getInstance().setData("phone", getPhoneNumber());
+            getWheel wheel = new getWheel(getPhoneNumber());
+            try {
+                String address = wheel.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
+                if (address.trim().isEmpty()) {
+                    startActivity(new Intent(MainActivity.this, NewDeviceActivity.class));
+                    MainActivity.this.finish();
+                }
+                SingleMemory.getInstance().setData("phone", getPhoneNumber());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            ColorDrawable colorDrawable = new ColorDrawable();
+            colorDrawable.setColor(0xff01a032);
+            final ActionBar bar = getActionBar();
+            bar.setBackgroundDrawable(colorDrawable);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(0xff01a032);
+            }
+            bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+            bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
+            bar.addTab(bar.newTab().setText("상태").setTabListener(new ActionBar.TabListener() {
+                @Override
+                public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    Fragment fragment = new StatusFragment();
+                    transaction.replace(R.id.sample_content_fragment, fragment);
+                    transaction.commit();
+                }
+
+                @Override
+                public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+                }
+
+                @Override
+                public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+                }
+            }));
+            bar.addTab(bar.newTab().setText("원격 조종").setTabListener(new ActionBar.TabListener() {
+                @Override
+                public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    Fragment fragment = new BluetoothChatFragment();
+                    transaction.replace(R.id.sample_content_fragment, fragment);
+                    transaction.commit();
+                }
+
+                @Override
+                public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+                }
+
+                @Override
+                public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+                }
+            }), 1, false);
+            bar.addTab(bar.newTab().setText("SOS").setTabListener(new ActionBar.TabListener() {
+                @Override
+                public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    Fragment fragment = new SosFragment();
+                    transaction.replace(R.id.sample_content_fragment, fragment);
+                    transaction.commit();
+                }
+
+                @Override
+                public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+                }
+
+                @Override
+                public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+                }
+            }), 2, false);
+            bar.addTab(bar.newTab().setText("SOS 관리").setTabListener(new ActionBar.TabListener() {
+                @Override
+                public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    Fragment fragment = new SosManagerFragment();
+                    transaction.replace(R.id.sample_content_fragment, fragment);
+                    transaction.commit();
+                }
+
+                @Override
+                public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+                }
+
+                @Override
+                public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+                }
+            }), 3, false);
         }
-        bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
-        bar.addTab(bar.newTab().setText("상태").setTabListener(new ActionBar.TabListener() {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragment fragment = new StatusFragment();
-                transaction.replace(R.id.sample_content_fragment, fragment);
-                transaction.commit();
-            }
-
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-        }));
-        bar.addTab(bar.newTab().setText("원격 조종").setTabListener(new ActionBar.TabListener() {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragment fragment = new BluetoothChatFragment();
-                transaction.replace(R.id.sample_content_fragment, fragment);
-                transaction.commit();
-            }
-
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-        }), 1, false);
-        bar.addTab(bar.newTab().setText("SOS").setTabListener(new ActionBar.TabListener() {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragment fragment = new SosFragment();
-                transaction.replace(R.id.sample_content_fragment, fragment);
-                transaction.commit();
-            }
-
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-        }), 2, false);
-        bar.addTab(bar.newTab().setText("SOS 관리").setTabListener(new ActionBar.TabListener() {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragment fragment = new SosManagerFragment();
-                transaction.replace(R.id.sample_content_fragment, fragment);
-                transaction.commit();
-            }
-
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-        }), 3, false);
-        bar.addTab(bar.newTab().setText("기기 관리").setTabListener(new ActionBar.TabListener() {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-                startActivity(new Intent(getApplicationContext(), NewDeviceActivity.class));
-                MainActivity.this.finish();
-            }
-
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
-
-            }
-        }), 4, false);
-
-        for(int i = 0;i<Permissions.length;i++)
-            requestPermission(i, Permissions[i]);
 
     }
 
 
-    private void requestPermission(int i, String permission){
-        // Here, thisActivity is the current activity
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                permission)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                    permission)) {
-
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-            } else {
-                // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{permission}, i);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
+    @SuppressLint("HardwareIds")
+    private String getPhoneNumber(){
+        TelephonyManager mTelephonyMgr;
+        mTelephonyMgr = (TelephonyManager)
+                getSystemService(Context.TELEPHONY_SERVICE);
+        if(mTelephonyMgr.getLine1Number().isEmpty() | mTelephonyMgr.getLine1Number().trim().isEmpty()){
+            return "";
+        }else
+            return mTelephonyMgr.getLine1Number();
+    }
+    public boolean hasPermissions(Context context, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
             }
         }
+        return true;
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

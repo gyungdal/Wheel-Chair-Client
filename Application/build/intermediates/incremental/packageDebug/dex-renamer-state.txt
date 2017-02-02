@@ -1,7 +1,0 @@
-#Tue Jan 31 17:00:31 KST 2017
-base.0=D\:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_efc1b5afb427d270c8b601bdcbe4bb6f074824d4
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=D\:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_aba8b02bae94a7867b25668178590ee6380f4d37\\classes.dex
-base.1=D\:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_aba8b02bae94a7867b25668178590ee6380f4d37
-file.0=D\:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_efc1b5afb427d270c8b601bdcbe4bb6f074824d4\\classes.dex

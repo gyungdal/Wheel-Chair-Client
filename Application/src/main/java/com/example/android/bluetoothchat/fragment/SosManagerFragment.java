@@ -3,6 +3,7 @@ package com.example.android.bluetoothchat.fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
@@ -22,7 +23,9 @@ import android.widget.Toast;
 
 import com.example.android.bluetoothchat.MainActivity;
 import com.example.android.bluetoothchat.R;
+import com.example.android.bluetoothchat.community.sendMessage;
 import com.example.android.bluetoothchat.utils.DBManager;
+import com.example.android.bluetoothchat.utils.SingleMemory;
 import com.example.android.common.logger.Log;
 
 import java.util.ArrayList;
@@ -52,12 +55,14 @@ public class SosManagerFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         switch (requestCode) {
             case REQUEST_SELECT_CONTACT:{
-                if (data.getData() == null)
+                if (data == null)
                     break;
                 Cursor cursor = getContext().getContentResolver().query(data.getData(),
                         new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
                                 ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, null);
                 cursor.moveToFirst();
+                if(cursor.isNull(1))
+                    break;
                 String name = cursor.getString(0);        //0은 이름을 얻어옵니다.
                 String number = cursor.getString(1);   //1은 번호를 받아옵니다.
                 cursor.close();
@@ -135,7 +140,21 @@ public class SosManagerFragment extends Fragment {
                 builder.setPositiveButton("문의하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "문의가 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                        sendMessage sendMessage = new sendMessage(
+                                SingleMemory.getInstance().getData("phone"),
+                                SingleMemory.getInstance().getData("company_name"),
+                                SingleMemory.getInstance().getData("user_name"),
+                                input.getText().toString()
+                                );
+                        try{
+                            Boolean can = sendMessage.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
+                            if(can)
+                                Toast.makeText(getContext(), "문의가 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getContext(), "문의 등록 실패", Toast.LENGTH_SHORT).show();
+                        }catch(Exception e){
+                            Log.e("send message", e.getMessage());
+                        }
                         dialog.dismiss();
                     }
                 });

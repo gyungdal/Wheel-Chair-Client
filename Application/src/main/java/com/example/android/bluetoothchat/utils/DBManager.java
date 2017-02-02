@@ -37,7 +37,7 @@ public class DBManager {
     // Opener of DB and Table
     private class OpenHelper extends SQLiteOpenHelper {
 
-        public OpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
+        OpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
                           int version) {
             super(context, name, null, version);
             // TODO Auto-generated constructor stub
@@ -46,7 +46,6 @@ public class DBManager {
         // 생성된 DB가 없을 경우에 한번만 호출됨
         @Override
         public void onCreate(SQLiteDatabase arg0) {
-
             String createSql = "create table number (name text, number text);";
             arg0.execSQL(createSql);
             createSql = "create table data (number text, address text);";
@@ -110,7 +109,6 @@ public class DBManager {
 
         results.moveToFirst();
         ArrayList<Pair<String, String>> infos = new ArrayList<Pair<String, String>>();
-
         while (!results.isAfterLast()) {
             Pair<String, String> info = new Pair<String, String>(results.getString(0), results.getString(1));
             infos.add(info);

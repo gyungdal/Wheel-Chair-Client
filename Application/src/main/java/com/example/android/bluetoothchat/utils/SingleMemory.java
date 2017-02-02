@@ -19,6 +19,8 @@ public class SingleMemory {
 
     public String getData(String key){
         try {
+            if(data == null)
+                data = new HashMap<>();
             return data.get(key);
         }catch(NullPointerException e){
             return null;
@@ -26,6 +28,8 @@ public class SingleMemory {
     }
 
     public void setData(String key, String value){
+        if(data == null)
+            data = new HashMap<>();
         data.put(key, value);
     }
 }

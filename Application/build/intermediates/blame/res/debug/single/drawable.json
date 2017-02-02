@@ -176,12 +176,12 @@
         "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_btn_colored_material.xml"
     },
     {
-        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
-        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
-    },
-    {
         "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\drawable\\round_white_area.xml",
         "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\src\\main\\res\\drawable\\round_white_area.xml"
+    },
+    {
+        "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
         "merged": "D:\\Develop\\Android\\APP\\WheelChairClient\\Application\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",

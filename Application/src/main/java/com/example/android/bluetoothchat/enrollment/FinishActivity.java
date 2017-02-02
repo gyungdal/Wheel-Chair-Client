@@ -1,11 +1,15 @@
 package com.example.android.bluetoothchat.enrollment;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,6 +18,9 @@ import android.widget.Toast;
 
 import com.example.android.bluetoothchat.MainActivity;
 import com.example.android.bluetoothchat.R;
+import com.example.android.bluetoothchat.community.newWheel;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by GyungDal on 2017-01-30.
@@ -44,6 +51,19 @@ public class FinishActivity extends Activity {
         }else{
             getActionBar().hide();
         }
+        if(getPhoneNumber().isEmpty()){
+            Toast.makeText(getApplicationContext(), "개통되지 않은 단말은 사용이 불가능 합니다."
+                , Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        try {
+            if(!new newWheel(getPhoneNumber(), companyName, userName, address).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get())
+                finish();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         setContentView(R.layout.activity_new_finish);
         end = (Button)findViewById(R.id.end_button);
         end.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +73,17 @@ public class FinishActivity extends Activity {
                 FinishActivity.this.finish();
             }
         });
-        Toast.makeText(getApplicationContext(), "USER : " + userName + "\nADDRESS : "
-                + address + "\nCOMPANY : " + companyName, Toast.LENGTH_SHORT).show();
+    }
+
+
+    @SuppressLint("HardwareIds")
+    private String getPhoneNumber(){
+        TelephonyManager mTelephonyMgr;
+        mTelephonyMgr = (TelephonyManager)
+                getSystemService(Context.TELEPHONY_SERVICE);
+        if(mTelephonyMgr.getLine1Number().isEmpty() | mTelephonyMgr.getLine1Number().trim().isEmpty()){
+            return "";
+        }else
+            return mTelephonyMgr.getLine1Number();
     }
 }

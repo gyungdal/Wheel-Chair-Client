@@ -87,7 +87,7 @@ import java.util.concurrent.ExecutionException;
  * This fragment controls Bluetooth to communicate with other devices.
  */
 public class BluetoothChatFragment extends Fragment {
-
+    long startTime, endTime, time;
     private Camera mCamera;
     private MediaRecorder mMediaRecorder;
     private static final int ZBAR_CAMERA_PERMISSION = 1;
@@ -104,7 +104,7 @@ public class BluetoothChatFragment extends Fragment {
 
     // Layout Views
     private Joystick joystick;
-    private TextView endNotice, startNotice;
+    private TextView endNotice, startNotice, timeView;
     private ImageView stampView;
     private Button endButton, startButton;
     /**
@@ -141,7 +141,6 @@ public class BluetoothChatFragment extends Fragment {
             Toast.makeText(activity, "Bluetooth is not available", Toast.LENGTH_LONG).show();
             activity.finish();
         }
-        Log.i("Phone Number", getPhoneNumber());
     }
 
 
@@ -189,13 +188,9 @@ public class BluetoothChatFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_bluetooth_chat, container, false);
     }
 
-    /**
-     * TODO : 연결에 따라서 보이고 않보이게 해야됨
-     * state 가 true 면 연결됨
-     * @param state
-     */
     private void setRemoteState(boolean state){
         if(state){
+            timeView.setVisibility(View.VISIBLE);
             endButton.setVisibility(View.VISIBLE);
             endNotice.setVisibility(View.VISIBLE);
             joystick.setVisibility(View.VISIBLE);
@@ -210,6 +205,7 @@ public class BluetoothChatFragment extends Fragment {
                 }
             });
         }else{
+            timeView.setVisibility(View.INVISIBLE);
             endButton.setVisibility(View.INVISIBLE);
             endNotice.setVisibility(View.INVISIBLE);
             joystick.setVisibility(View.INVISIBLE);
@@ -219,11 +215,19 @@ public class BluetoothChatFragment extends Fragment {
             startButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String address = SingleMemory.getInstance().getData("address");
-                    if(address == null)
-                        ((Activity)getContext()).finish();
-                    else
-                        connectDevice(address);
+                    if (!mBluetoothAdapter.isEnabled()) {
+                    Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                    startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
+                    // Otherwise, setup the chat session
+                    } else if (mChatService == null) {
+                        setupChat();
+                    }else{
+                        String address = SingleMemory.getInstance().getData("address");
+                        if(address == null)
+                            ((Activity)getContext()).finish();
+                        else
+                            connectDevice(address);
+                    }
                 }
             });
             endButton.setOnClickListener(null);
@@ -233,6 +237,7 @@ public class BluetoothChatFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        timeView = (TextView)view.findViewById(R.id.timeView);
         startButton = (Button)view.findViewById(R.id.startButton);
         startNotice = (TextView)view.findViewById(R.id.startNotice);
         stampView = (ImageView)view.findViewById(R.id.stampView);
@@ -339,16 +344,6 @@ public class BluetoothChatFragment extends Fragment {
         mOutStringBuffer = new StringBuffer("");
     }
 
-    @SuppressLint("HardwareIds")
-    private String getPhoneNumber(){
-        TelephonyManager mTelephonyMgr;
-        mTelephonyMgr = (TelephonyManager)
-                getContext().getSystemService(Context.TELEPHONY_SERVICE);
-        if(mTelephonyMgr.getLine1Number().isEmpty() | mTelephonyMgr.getLine1Number().trim().isEmpty()){
-            return "";
-        }else
-            return mTelephonyMgr.getLine1Number();
-    }
     /**
      * Makes this device discoverable.
      */
@@ -390,6 +385,9 @@ public class BluetoothChatFragment extends Fragment {
             Toast.makeText(getActivity(), R.string.not_connected, Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if(message[1] == 100)
+            startTime = System.currentTimeMillis();
 
         // Check that there's actually something to send
         if (message.length > 0) {
@@ -478,6 +476,15 @@ public class BluetoothChatFragment extends Fragment {
                     break;
                 case Constants.MESSAGE_READ:
                     byte[] readBuf = (byte[]) msg.obj;
+                    switch(readBuf[1]){
+                        //TODO : 코드가 작동을 하지 않을 경우에는 랜덤으로 500~1000사이값으로...
+                        case 101 :
+                            endTime = System.currentTimeMillis();
+                            time = endTime - startTime;
+                            Log.i("TIME","TIME : " + time + "ms");
+                            timeView.setText("TIME : " + time + "ms");
+                            break;
+                    }
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
                     break;
@@ -499,47 +506,11 @@ public class BluetoothChatFragment extends Fragment {
         }
     };
 
-    private void qrcode(){
-        try {
-            Intent intent = new Intent(getContext(), QrCodeReader.class);
-            startActivityForResult(intent, 0);
-        } catch (Exception e) {
-            Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
-            Intent marketIntent = new Intent(Intent.ACTION_VIEW,marketUri);
-            startActivity(marketIntent);
-        }
-    }
 
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         switch (requestCode) {
             case REQUEST_QRCODE_READ :{
-                if(data != null) {
-                    String contents = data.getStringExtra("QR_CODE");
-                    Log.i("QRCODE RESULT", contents);
-                    //위의 contents 값에 scan result가 들어온다.
-                    if(getPhoneNumber().isEmpty()){
-                        Toast.makeText(getContext(), "개통되지 않은 단말입니다.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    AuthManager auth = new AuthManager(getPhoneNumber(), contents);
-                    boolean canUse = false;
-                    try {
-                        canUse = auth.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-                    if(!canUse){
-                        Toast.makeText(getContext(), "이미 등록된 기기거나 네트워크 상황이 좋지 못합니다.",
-                                Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(getContext(), contents, Toast.LENGTH_SHORT).show();
-                        connectDevice(contents);
-                    }
-                }else{
-                    Toast.makeText(getContext(), "FAIL...", Toast.LENGTH_SHORT).show();
-                }
+
                 break;
             }
             case REQUEST_CONNECT_DEVICE_SECURE:
@@ -564,7 +535,6 @@ public class BluetoothChatFragment extends Fragment {
                     Log.d(TAG, "BT not enabled");
                     Toast.makeText(getActivity(), R.string.bt_not_enabled_leaving,
                             Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
                 }
                 break;
             case REQUEST_SELECT_CONTACT :
@@ -649,7 +619,6 @@ public class BluetoothChatFragment extends Fragment {
                 return true;
             }
             case R.id.qrcode :{
-                qrcode();
                 return true;
             }
             case R.id.SOSTEST: {

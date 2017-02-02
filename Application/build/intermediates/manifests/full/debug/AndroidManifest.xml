@@ -34,17 +34,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.RECORD_VIDEO" />
-    <uses-permission android:name="android.permission.WRITE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
 
     <uses-feature
         android:name="android.hardware.camera.front"
@@ -79,6 +73,7 @@
         <activity android:name="com.example.android.bluetoothchat.enrollment.CompanyNameActivity" />
         <activity android:name="com.example.android.bluetoothchat.enrollment.FinishActivity" />
         <activity android:name="com.example.android.bluetoothchat.enrollment.NewDeviceActivity" />
+        <activity android:name="com.example.android.bluetoothchat.PermissionRequestActivity" />
         <activity
             android:name="com.example.android.bluetoothchat.DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"

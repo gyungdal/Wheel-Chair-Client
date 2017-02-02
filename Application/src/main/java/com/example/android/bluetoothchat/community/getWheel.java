@@ -1,5 +1,6 @@
 package com.example.android.bluetoothchat.community;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -16,8 +17,11 @@ import java.net.URL;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.android.bluetoothchat.utils.SingleMemory;
+
 
 public class getWheel extends AsyncTask<Void, Void, String> {
+    private String serverUrl = "http://gayangcodezero.iptime.org:8080/getMyWheel.php?phone=";
     private String phone;
 
     public getWheel(String phone){
@@ -27,13 +31,14 @@ public class getWheel extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... voids) {
         try{
-            JSONObject json = new JSONObject(getStringFromUrl("http://gyungdal.iptime.org/test.php?phone="
-                    + this.phone));
-            String status = json.getString("status");
-            if(status.equals("OK"))
+            String text = getText(serverUrl + phone);
+            if(text.equals("[]"))
                 return "";
-            else
-                return "";
+            JSONObject json = new JSONArray(text).getJSONObject(0);
+            SingleMemory.getInstance().setData("user_name", json.getString("user_name"));
+            SingleMemory.getInstance().setData("company_name", json.getString("company_name"));
+            SingleMemory.getInstance().setData("address", json.getString("device_address"));
+            return json.getString("device_address");
         }catch(Exception e){
             Log.e("AuthManager", e.getMessage());
         }
@@ -41,51 +46,15 @@ public class getWheel extends AsyncTask<Void, Void, String> {
     }
 
 
-    // getStringFromUrl : 주어진 URL의 문서의 내용을 문자열로 반환
-    public String getStringFromUrl(String pUrl){
-
-        BufferedReader bufreader=null;
-        HttpURLConnection urlConnection = null;
-
-        StringBuffer page=new StringBuffer(); //읽어온 데이터를 저장할 StringBuffer객체 생성
-
-        try {
-
-            //[Type1]
-            /*
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpResponse response = httpclient.execute(new HttpGet(pUrl));
-            InputStream contentStream = response.getEntity().getContent();
-            */
-
-            //[Type2]
-            URL url= new URL(pUrl);
-            urlConnection = (HttpURLConnection) url.openConnection();
-            InputStream contentStream = urlConnection.getInputStream();
-
-            bufreader = new BufferedReader(new InputStreamReader(contentStream,"UTF-8"));
-            String line = null;
-
-            //버퍼의 웹문서 소스를 줄단위로 읽어(line), Page에 저장함
-            while((line = bufreader.readLine())!=null){
-                Log.d("line:",line);
-                page.append(line);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally{
-            //자원해제
-            try {
-                bufreader.close();
-                urlConnection.disconnect();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+    private String getText(String connUrl) throws IOException {
+        String fullString = "";
+        URL url = new URL(connUrl);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            fullString += line;
         }
-
-        Log.i("get User Data", page.toString());
-        return page.toString();
+        reader.close();
+        return fullString;
     }
 }

@@ -656,7 +656,7 @@
     <string name="app_name">WheelChairClient</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
-    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Remote.</string>
     <string name="button_scan">Scan for devices</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="discoverable">Make discoverable</string>

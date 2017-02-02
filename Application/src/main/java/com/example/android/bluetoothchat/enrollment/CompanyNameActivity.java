@@ -59,7 +59,7 @@ public class CompanyNameActivity extends Activity{
                 Intent intent = new Intent(getApplicationContext(), FinishActivity.class);
                 intent.putExtra("user_name", name);
                 intent.putExtra("address", adr);
-                intent.putExtra("company_name", "기관 없음ㅌ");
+                intent.putExtra("company_name", "기관 없음");
                 startActivity(intent);
                 CompanyNameActivity.this.finish();
             }
