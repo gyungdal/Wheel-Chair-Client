@@ -481,7 +481,7 @@ public class BluetoothChatFragment extends Fragment {
                             endTime = System.currentTimeMillis();
                             time = endTime - startTime;
                             Log.i("TIME","TIME : " + time + "ms");
-                            timeView.setText("TIME : " + time + "ms");
+                            timeView.setText("반응속도 : " + time + "ms");
                             break;
                     }
                     // construct a string from the valid bytes in the buffer
