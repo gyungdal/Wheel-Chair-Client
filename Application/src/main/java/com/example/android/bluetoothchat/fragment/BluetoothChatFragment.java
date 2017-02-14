@@ -477,7 +477,6 @@ public class BluetoothChatFragment extends Fragment {
                 case Constants.MESSAGE_READ:
                     byte[] readBuf = (byte[]) msg.obj;
                     switch(readBuf[1]){
-                        //TODO : 코드가 작동을 하지 않을 경우에는 랜덤으로 500~1000사이값으로...
                         case 101 :
                             endTime = System.currentTimeMillis();
                             time = endTime - startTime;
